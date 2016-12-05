@@ -1,0 +1,123 @@
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+if_up_strictness link
+ 
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+background yes
+ 
+format_human_readable
+ 
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont Liberation Sans:style=Bold:size=9
+override_utf8_locale yes
+text_buffer_size 4096
+#text_buffer_size 2048
+ 
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 200
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+ 
+alignment top_right
+gap_x 12
+#gap_x 25
+gap_y 40
+minimum_size 182 750
+maximum_width 182
+ 
+default_bar_size 60 8
+ 
+#########################
+# - Graphics settings - #
+#########################
+draw_shades yes
+stippled_borders 1
+ 
+default_color 1793d0
+color0 green
+color1 1793d0
+color2 white
+color3 1793d0
+
+default_graph_size 182 40
+ 
+TEXT
+${font Liberation Sans:style=Bold:size=14}SYSTEM $hr${font}
+##############
+# - SYSTEM - #
+##############
+# |--CPU
+${color0}${cpubar cpu0}${alignr}${color}CPU1:  ${alignr}${color2}${cpu cpu1}%
+${color2}${cpugraph cpu1 40,182 1793d0 ffffff}
+# |--MEM
+${color0}${membar}${alignr}${color}RAM:  ${alignr}${color2}$memperc%
+${color2}${memgraph 40,182 1793d0 ffffff}
+# |--Uptime
+${alignr}${color}Uptime: ${alignr}${color2}${uptime}
+# |--Cache
+${color}Cached:  ${alignr}${color2}${cached}
+
+# |--Swap
+${color0}${swapbar 8,60}${alignr}${color}Swap:  ${alignr}${color2}$swap
+${color}Free: ${color2}$swapfree ${alignr}${color}Total: ${color2}$swapmax
+
+###############
+# - NETWORK - #
+###############
+${font Liberation Sans:style=Bold:size=14}${color}NETWORK $hr${font}
+# |-- OVERALL
+Signal:  ${color2}${wireless_link_qual_perc wls1}%${alignr}${color}Speed: ${color2}${wireless_bitrate wls1}
+# ?-- DOWNLOAD
+${color2}${downspeedgraph wls1 1793d0 ffffff}
+${color}Download: ${color2}${downspeed wls1}${alignr}${color}Total: ${color2}${totaldown wls1}
+${color0}${upspeedgraph wls1 1793d0 ffffff}
+${color1}Upload: ${color2}${upspeed wls1}${alignr}${color}Total: ${color2}${totalup wls1}
+#################
+# - PROCESSES - #
+#################
+${font Liberation Sans:style=Bold:size=14}${color}PROCESSES $hr${font}
+Process Name${alignr}PID  CPU  MEM${color2}
+${top name 1}${alignr}${top pid 1}${alignr}${top cpu 1}${alignr}${top mem 1}
+${top name 2}${alignr}${top pid 2}${alignr}${top cpu 2}${alignr}${top mem 2}
+${top name 3}${alignr}${top pid 3}${alignr}${top cpu 3}${alignr}${top mem 3}
+${top name 4}${alignr}${top pid 4}${alignr}${top cpu 4}${alignr}${top mem 4}
+${top name 5}${alignr}${top pid 5}${alignr}${top cpu 5}${alignr}${top mem 5}
+${top name 6}${alignr}${top pid 6}${alignr}${top cpu 6}${alignr}${top mem 6}
+${top name 7}${alignr}${top pid 7}${alignr}${top cpu 7}${alignr}${top mem 7}
+${top name 8}${alignr}${top pid 8}${alignr}${top cpu 8}${alignr}${top mem 8}
+${top name 9}${alignr}${top pid 9}${alignr}${top cpu 9}${alignr}${top mem 9}
+${top name 10}${alignr}${top pid 10}${alignr}${top cpu 10}${alignr}${top mem 10}
+${color}Total: ${color2}$processes${alignr}${color}Running: ${color2}$running_processes
+#############
+# - POWER - #
+#############
+${font Liberation Sans:style=Bold:size=14}${color}POWER $hr${font}
+${color0}${battery_bar}${alignr}${color}Battery: ${alignr}${color2}${battery}
+${color}Remaining: ${alignr}${color2}${battery_time}
+################
+# - DISK I/O - #
+################
+${font Liberation Sans:style=Bold:size=14}${color}DISK I/O $hr${font}
+Root Disk: ${alignr}${color2}/dev/sda2 (${fs_size /})
+${color}Usage: ${alignr}${color2}${fs_used /}, ${fs_free /} free
+Total I/O:  ${color2}${alignr}${diskio sda}${color}
+Read I/O:  ${color2}$alignr${diskio_read sda}
+${diskiograph_read sda 8,180 1793d0 ffffff}${color}
+${voffset 0}Write I/O:  ${font}$${color2}$alignr${diskio_write sda}
+${diskiograph_write sda 8,180 1793d0 ffffff}${color}
